@@ -14,6 +14,7 @@
 		0488F99929E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F99829E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3Tests.swift */; };
 		0488F9A329E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9A229E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift */; };
 		0488F9A529E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9A429E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift */; };
+		0488F9B229E4FC9E00A14024 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9B129E4FC9E00A14024 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0488F99E29E4ED1500A14024 /* 0706012110020-Davina T W-AFL3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "0706012110020-Davina T W-AFL3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488F9A229E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _706012110020_Davina_T_W_AFL3UITests.swift; sourceTree = "<group>"; };
 		0488F9A429E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0488F9B129E4FC9E00A14024 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				0488F98729E4ED1400A14024 /* _706012110020_Davina_T_W_AFL3App.swift */,
 				0488F98929E4ED1400A14024 /* ContentView.swift */,
 				0488F98B29E4ED1500A14024 /* Assets.xcassets */,
+				0488F9B129E4FC9E00A14024 /* CircleImage.swift */,
 				0488F98D29E4ED1500A14024 /* Preview Content */,
 			);
 			path = "0706012110020-Davina T W-AFL3";
@@ -259,6 +262,7 @@
 			files = (
 				0488F98A29E4ED1400A14024 /* ContentView.swift in Sources */,
 				0488F98829E4ED1400A14024 /* _706012110020_Davina_T_W_AFL3App.swift in Sources */,
+				0488F9B229E4FC9E00A14024 /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
