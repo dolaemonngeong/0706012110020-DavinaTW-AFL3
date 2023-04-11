@@ -15,6 +15,7 @@
 		0488F9A329E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9A229E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift */; };
 		0488F9A529E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9A429E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift */; };
 		0488F9B229E4FC9E00A14024 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9B129E4FC9E00A14024 /* CircleImage.swift */; };
+		0488F9B429E4FE3100A14024 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488F9B329E4FE3100A14024 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		0488F9A229E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _706012110020_Davina_T_W_AFL3UITests.swift; sourceTree = "<group>"; };
 		0488F9A429E4ED1500A14024 /* _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _706012110020_Davina_T_W_AFL3UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0488F9B129E4FC9E00A14024 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		0488F9B329E4FE3100A14024 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				0488F98929E4ED1400A14024 /* ContentView.swift */,
 				0488F98B29E4ED1500A14024 /* Assets.xcassets */,
 				0488F9B129E4FC9E00A14024 /* CircleImage.swift */,
+				0488F9B329E4FE3100A14024 /* MapView.swift */,
 				0488F98D29E4ED1500A14024 /* Preview Content */,
 			);
 			path = "0706012110020-Davina T W-AFL3";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0488F98A29E4ED1400A14024 /* ContentView.swift in Sources */,
+				0488F9B429E4FE3100A14024 /* MapView.swift in Sources */,
 				0488F98829E4ED1400A14024 /* _706012110020_Davina_T_W_AFL3App.swift in Sources */,
 				0488F9B229E4FC9E00A14024 /* CircleImage.swift in Sources */,
 			);
