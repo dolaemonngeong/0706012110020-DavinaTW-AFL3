@@ -8,12 +8,17 @@
 import Foundation
 import Combine
 
+//
 final class ModelData: ObservableObject{
+    
+//    property wrappers untuk membuat objek yang dapat diamati secara otomatis mengumumkan saat terjadi perubahan
     @Published var landmarks: [Landmark] = load("landmarkData.json")
 }
 
+//array yang diinisialisasi dari landmarkData.json
 var landmarks: [Landmark] = load("landmarkData.json")
 
+//method yang mengambil JSON data
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 

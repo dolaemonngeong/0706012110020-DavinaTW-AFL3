@@ -6,9 +6,14 @@
 //
 
 import Foundation
+
+//digunakan untuk property image
 import SwiftUI
+
+//digunakan untuk locationCoordinate
 import CoreLocation
 
+//inisialisasi Landmark dengan property yang menyesuaikan dengan file landmarkData.json yang berada di folder Resources. struct ini harus memenuhi protocol Hashable, Codable, dan Indentifable
 struct Landmark: Hashable, Codable, Identifiable  {
     var id: Int
     var name: String
@@ -22,14 +27,17 @@ struct Landmark: Hashable, Codable, Identifiable  {
            Image(imageName)
        }
     
-    
+
     private var coordinates: Coordinates
+    
+//    untuk interaksi dengan MapKit framework
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
             latitude: coordinates.latitude,
             longitude: coordinates.longitude)
     }
-
+    
+//    sebuah nested struct yang mencerminkan penyimpanan dalam struktur data JSON
     struct Coordinates: Hashable, Codable {
         var latitude: Double
         var longitude: Double

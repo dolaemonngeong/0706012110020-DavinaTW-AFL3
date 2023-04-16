@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct FavoriteButton: View {
+    
+//    menunjukkan status tombol terbaru, dan memberikan nilai konstan untuk pratinjau
     @Binding var isSet: Bool
     
     var body: some View {
+        
+//        menampilkan tombol bintang
         Button{
             isSet.toggle()
         } label: {

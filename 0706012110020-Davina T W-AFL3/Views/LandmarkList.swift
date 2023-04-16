@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    
+//    property untuk membuat view yang bergantung pada data bersama
     @EnvironmentObject var modelData: ModelData
+    
+//    property yang simpan informasi spesifik
     @State private var showFavoritesOnly = false
     
+//    variabel yang membantu dalam menampilkan landmark favorit
     var filteredLandmarks: [Landmark]{
         modelData.landmarks.filter{ landmark in
             (!showFavoritesOnly || landmark.isFavorite)
@@ -18,12 +23,18 @@ struct LandmarkList: View {
     }
     
     var body: some View {
+//        menampilkan tumpukan tampilan yang mewakili jalur yang terlihat dalam hierarki navigasi
         NavigationView {
+            
+//            menampilkan seluruh list data
             List {
+                
+//                memberi tombol toggle yang dapat filter landmark favorit
                 Toggle(isOn: $showFavoritesOnly){
                     Text("Favorites only")
                 }
                 
+//                navigasi ke detail dari landmark yang diklik pengguna
                 ForEach(filteredLandmarks) { landmark in
                     NavigationLink{
                         LandmarkDetail(landmark: landmark)
@@ -32,6 +43,8 @@ struct LandmarkList: View {
                     }
                 }
             }
+            
+//            menampilkan judul pada navigation bar
             .navigationTitle("Landmarks")
         }
     }
