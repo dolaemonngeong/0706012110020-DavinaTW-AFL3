@@ -13,6 +13,7 @@ final class ModelData: ObservableObject{
     
 //    property wrappers untuk membuat objek yang dapat diamati secara otomatis mengumumkan saat terjadi perubahan
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 //array yang diinisialisasi dari landmarkData.json

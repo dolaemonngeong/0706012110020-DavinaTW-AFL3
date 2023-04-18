@@ -25,15 +25,15 @@ struct LandmarkList: View {
     var body: some View {
 //        menampilkan tumpukan tampilan yang mewakili jalur yang terlihat dalam hierarki navigasi
         NavigationView {
-            
+
 //            menampilkan seluruh list data
             List {
-                
+
 //                memberi tombol toggle yang dapat filter landmark favorit
                 Toggle(isOn: $showFavoritesOnly){
                     Text("Favorites only")
                 }
-                
+
 //                navigasi ke detail dari landmark yang diklik pengguna
                 ForEach(filteredLandmarks) { landmark in
                     NavigationLink{
@@ -43,15 +43,26 @@ struct LandmarkList: View {
                     }
                 }
             }
-            
+
 //            menampilkan judul pada navigation bar
             .navigationTitle("Landmarks")
         }
+        
+//        NavigationStack{
+//            List(landmarks){ landmark in
+//                NavigationLink{
+//                    LandmarkDetail(landmark: landmark)
+//                }
+//            }
+//        }
+        
     }
 }
 
 struct LandmarkList_Previews: PreviewProvider {
+    
+//    di dalam variabel bawah ini dapat custom device pada preview
     static var previews: some View {
-        LandmarkDetail(landmark: ModelData().landmarks[0])
+        LandmarkList().environmentObject(ModelData())
     }
 }
