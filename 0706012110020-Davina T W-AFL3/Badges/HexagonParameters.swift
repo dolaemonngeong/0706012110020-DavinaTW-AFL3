@@ -13,8 +13,11 @@ struct HexagonParameters{
         let curve: CGPoint
         let control: CGPoint
     }
+    
+//    membantu dalam pengaturan letaknya
     static let adjustment: CGFloat = 0.085
 
+//    menentukan letak 6 titik sudut
     static let segments = [
         Segment(
             line:    CGPoint(x: 0.60, y: 0.05),
