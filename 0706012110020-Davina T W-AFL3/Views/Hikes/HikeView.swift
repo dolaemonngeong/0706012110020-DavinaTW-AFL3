@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A view displaying information about a hike, including an elevation graph.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ A view displaying information about a hike, including an elevation graph.
+ */
 
 import SwiftUI
 
@@ -20,25 +20,25 @@ extension AnyTransition {
 struct HikeView: View {
     var hike: Hike
     
-//    inisialisasi variabel yang dapat menampilkan detail sebelum tombol ditekan
+    // inisialisasi variabel yang dapat menampilkan detail sebelum tombol ditekan
     @State private var showDetail = true
-
+    
     var body: some View {
         VStack {
             HStack {
                 HikeGraph(hike: hike, path: \.elevation)
                     .frame(width: 50, height: 30)
-
+                
                 VStack(alignment: .leading) {
                     Text(hike.name)
                         .font(.headline)
                     Text(hike.distanceText)
                 }
-
+                
                 Spacer()
-
+                
                 Button {
-//                    memanggil function yang digunakan untuk memberi animasi pada tampilan hike detail
+                    // memanggil function yang digunakan untuk memberi animasi pada tampilan hike detail
                     withAnimation {
                         showDetail.toggle()
                     }
@@ -47,18 +47,18 @@ struct HikeView: View {
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                     
-//                    memberi efek rotasi ke kanan pada tombol saat tombol ditekan
+                    //                    memberi efek rotasi ke kanan pada tombol saat tombol ditekan
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
                     
-//                    memberi efek memperbesar tombol saat tombol ditekan
+                    //                    memberi efek memperbesar tombol saat tombol ditekan
                         .scaleEffect(showDetail ? 1.5 : 1)
                         .padding()
                 }
             }
-
+            
             if showDetail {
                 HikeDetail(hike: hike)
-//                transisi menampilkan hike detail saat tombol ditekan
+                //                transisi menampilkan hike detail saat tombol ditekan
                     .transition(.moveAndFade)
             }
         }

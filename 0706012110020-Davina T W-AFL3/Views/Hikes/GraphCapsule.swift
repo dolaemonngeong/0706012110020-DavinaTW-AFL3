@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A single line in the graph.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ A single line in the graph.
+ */
 
 import SwiftUI
 
@@ -13,15 +13,15 @@ struct GraphCapsule: View, Equatable {
     var height: CGFloat
     var range: Range<Double>
     var overallRange: Range<Double>
-
+    
     var heightRatio: CGFloat {
         max(CGFloat(magnitude(of: range) / magnitude(of: overallRange)), 0.15)
     }
-
+    
     var offsetRatio: CGFloat {
         CGFloat((range.lowerBound - overallRange.lowerBound) / magnitude(of: overallRange))
     }
-
+    
     var body: some View {
         Capsule()
             .fill(color)

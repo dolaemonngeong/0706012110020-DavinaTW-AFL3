@@ -11,23 +11,23 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-//    parameter pada MapView
+    //    parameter pada MapView
     var coordinate: CLLocationCoordinate2D
     
-//    variabel yang memegang informasi wilayah dimana @State akan memberikan informasi antar view
+    //    variabel yang memegang informasi wilayah dimana @State akan memberikan informasi antar view
     @State private var region = MKCoordinateRegion()
-    	
+    
     var body: some View {
         
-//        mengambil binding untuk region
+        //        mengambil binding untuk region
         Map(coordinateRegion: $region)
-//        untuk memicu penghitungan wilayah berdasarkan koordinat saat ini.
+        //        untuk memicu penghitungan wilayah berdasarkan koordinat saat ini.
             .onAppear{
                 setRegion(coordinate)
             }
     }
     
-//    metode yang dapat update wilayah berdasarkan nilai koordinat
+    //    metode yang dapat update wilayah berdasarkan nilai koordinat
     private func setRegion(_ coordinate: CLLocationCoordinate2D){
         region = MKCoordinateRegion(
             center: coordinate,
