@@ -17,8 +17,10 @@ final class ModelData: ObservableObject{
     //    inisialisasi variabel yang diambil dari file hikeData.json
     var hikes: [Hike] = load("hikeData.json")
     
+    // setiap perubahan yang dibuat pada properti ini akan dipublikasikan ke tampilan
     @Published var profile = Profile.default
     
+    //    array yang menyimpan data landmark dengan variabel boolean 'isFeatured' adalah true
     var features: [Landmark] {
         landmarks.filter { $0.isFeatured }
     }

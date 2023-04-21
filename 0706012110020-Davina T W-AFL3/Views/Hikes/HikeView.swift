@@ -47,10 +47,10 @@ struct HikeView: View {
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                     
-                    //                    memberi efek rotasi ke kanan pada tombol saat tombol ditekan
+                    // memberi efek rotasi ke kanan pada tombol saat tombol ditekan
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
                     
-                    //                    memberi efek memperbesar tombol saat tombol ditekan
+                    // memberi efek memperbesar tombol saat tombol ditekan
                         .scaleEffect(showDetail ? 1.5 : 1)
                         .padding()
                 }
@@ -58,7 +58,7 @@ struct HikeView: View {
             
             if showDetail {
                 HikeDetail(hike: hike)
-                //                transisi menampilkan hike detail saat tombol ditekan
+                // transisi menampilkan hike detail saat tombol ditekan
                     .transition(.moveAndFade)
             }
         }

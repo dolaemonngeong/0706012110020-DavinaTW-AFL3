@@ -23,18 +23,18 @@ struct LandmarkList: View {
     }
     
     var body: some View {
-        //        menampilkan tumpukan tampilan yang mewakili jalur yang terlihat dalam hierarki navigasi
+        //  menampilkan tumpukan tampilan yang mewakili jalur yang terlihat dalam hierarki navigasi
         NavigationView {
             
-            //            menampilkan seluruh list data
+            // menampilkan seluruh list data
             List {
                 
-                //                memberi tombol toggle yang dapat filter landmark favorit
+                //  memberi tombol toggle yang dapat filter landmark favorit
                 Toggle(isOn: $showFavoritesOnly){
                     Text("Favorites only")
                 }
                 
-                //                navigasi ke detail dari landmark yang diklik pengguna
+                //  navigasi ke detail dari landmark yang diklik pengguna
                 ForEach(filteredLandmarks) { landmark in
                     NavigationLink{
                         LandmarkDetail(landmark: landmark)

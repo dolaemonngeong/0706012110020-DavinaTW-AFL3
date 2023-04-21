@@ -13,18 +13,18 @@ struct Profile {
     var seasonalPhoto = Season.winter
     var goalDate = Date()
     
-    //    membuat pengguna baru dengan username default g_kumar
+    // membuat pengguna baru dengan property username "g_kumar" secara default
     static let `default` = Profile(username: "g_kumar")
     
-    //    enum adalah tipe data yang memiliki kumpulan nilai tetap. pada bagian ini enum Season memiliki 3 protokol yakni String, CaseIterable, dan Identifiable
+    // enum adalah tipe data yang memiliki kumpulan nilai tetap. pada bagian ini enum Season memiliki 3 protokol yakni String, CaseIterable, dan Identifiable
     enum Season: String, CaseIterable, Identifiable {
-        //        nilai yang didefinisikan dalam enum category berupa string
+        // nilai yang didefinisikan dalam enum season berupa string
         case spring = "🌷"
         case summer = "🌞"
         case autumn = "🍂"
         case winter = "☃️"
         
-        //        variabel yang mendifinisikan Season
+        //  property yang diperlukan untuk menyesuaikan protokol Identifiable
         var id: String { rawValue }
     }
 }

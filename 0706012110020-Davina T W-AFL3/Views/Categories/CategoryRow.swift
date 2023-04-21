@@ -12,6 +12,8 @@ struct CategoryRow: View {
     var items: [Landmark]
     
     var body: some View {
+        
+        //  kumpulan kelompok view secara vertikal ditaruh di kiri dan tengah
         VStack(alignment: .leading) {
             Text(categoryName)
                 .font(.headline)
@@ -21,7 +23,7 @@ struct CategoryRow: View {
             //  pengguna dapat scroll secara horisontal
             ScrollView(.horizontal, showsIndicators: false) {
                 
-                // data 'rivers' disusun secara horisontal dimana jarak antar tiap river adalah 0
+                // data 'rivers' disusun secara horisontal dimana jarak antar tiap river/sungai adalah 0 dan ditaruh pada sisi atas VStack
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(items) { landmark in
                         NavigationLink {
@@ -33,7 +35,7 @@ struct CategoryRow: View {
                 }
             }
             
-            // mengatur ukuran ketinggian scroll view
+            // mengatur ukuran ketinggian baris dari tulisan nama kategori hingga tulisan nama river/sungai
             .frame(height: 185)
         }
     }
@@ -42,6 +44,7 @@ struct CategoryRow: View {
 struct CategoryRow_Previews: PreviewProvider {
     static var landmarks = ModelData().landmarks
     
+//    menampilkan kategori pada index pertama pada preview
     static var previews: some View {
         CategoryRow(
             categoryName: landmarks[0].category.rawValue,

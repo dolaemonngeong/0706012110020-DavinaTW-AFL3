@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ProfileSummary: View {
+    
+    // inisialisasi variabel modelData untuk mempermudah dalam mengakses class ModelData
     @EnvironmentObject var modelData: ModelData
+    
+    // inisialisasi variabel profile untuk mempermudah dalam mengakses struct Profile
     var profile: Profile
     
     var body: some View {
@@ -22,6 +26,7 @@ struct ProfileSummary: View {
                 Text("Seasonal Photos: \(profile.seasonalPhoto.rawValue)")
                 Text("Goal Date: ") + Text(profile.goalDate, style: .date)
                 
+                // memberi garis tipis berwarna abu-abu untuk memisahkan konten
                 Divider()
                 
                 VStack(alignment: .leading) {
@@ -30,13 +35,25 @@ struct ProfileSummary: View {
                     
                     ScrollView(.horizontal) {
                         HStack {
+                            // memanggil struct HikeBadge dengan property nama "First Hike
                             HikeBadge(name: "First Hike")
+                            
+                            // memanggil struct HikeBadge dengan property nama "Earth Day"
                             HikeBadge(name: "Earth Day")
+                            
+                            //  menyesuaikan hue yang diputar 90 derajat dimana warna dasarnya berubah menjadi hijau
                                 .hueRotation(Angle(degrees: 90))
+                            
+                            //                            memanggil struct HikeBadge dengan property nama "Teeth Hike"
                             HikeBadge(name: "Tenth Hike")
+                            
+                            // mengubah saturasi warna menjadi abu-abu dengan value 0.5
                                 .grayscale(0.5)
+                            
                                 .hueRotation(Angle(degrees: 45))
                         }
+                        
+                        // memberi jarak di bawah HStack
                         .padding(.bottom)
                     }
                 }
@@ -47,6 +64,7 @@ struct ProfileSummary: View {
                     Text("Recent Hikes")
                         .font(.headline)
                     
+                    // memanggil struct HikeView yang menampilkan array hikes pada index 0
                     HikeView(hike: modelData.hikes[0])
                 }
             }
@@ -56,6 +74,8 @@ struct ProfileSummary: View {
 
 struct ProfileSummary_Previews: PreviewProvider {
     static var previews: some View {
+        
+        // memanggil struct ProfileSummary dengan property profile
         ProfileSummary(profile: Profile.default)
             .environmentObject(ModelData())
     }

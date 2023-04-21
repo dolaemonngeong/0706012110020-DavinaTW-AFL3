@@ -11,6 +11,7 @@ struct HikeDetail: View {
     let hike: Hike
     @State var dataToShow = \Hike.Observation.elevation
     
+    // inisialisasi variabel untuk tombol
     var buttons = [
         ("Elevation", \Hike.Observation.elevation),
         ("Heart Rate", \Hike.Observation.heartRate),
@@ -24,6 +25,8 @@ struct HikeDetail: View {
             
             HStack(spacing: 25) {
                 ForEach(buttons, id: \.0) { value in
+                    
+                    // menampilkan tombol Elevation, Heart Rate, dan Pace
                     Button {
                         dataToShow = value.1
                     } label: {
@@ -32,6 +35,7 @@ struct HikeDetail: View {
                             .foregroundColor(value.1 == dataToShow
                                              ? .gray
                                              : .accentColor)
+                        // tidak dapat memberi animasi pada text
                             .animation(nil)
                     }
                 }
