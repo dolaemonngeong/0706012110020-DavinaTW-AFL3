@@ -10,27 +10,31 @@ import SwiftUI
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
     
-//    digunakan untuk mengontrol presentasi dari profile user
+    //    digunakan untuk mengontrol presentasi dari profile user
     @State private var showingProfile = false
     
     var body: some View {
         NavigationView {
             List {
                 
-                // menampilkan gambar dari array deatures pada index pertama
-                modelData.features[0].image
-                // agar gambar menyesuaikan ukuran fram
-                    .resizable()
+                //                // menampilkan gambar dari array deatures pada index pertama
+                //                modelData.features[0].image
+                //                // agar gambar menyesuaikan ukuran fram
+                //                    .resizable()
+                //
+                //                //  gambar mengisi seluruh frame, walaupun ada sebagian yang dipotong/crop
+                //                    .scaledToFill()
+                //                // mengatur ketinggian frame
+                //                    .frame(height: 200)
+                //
+                //                // memotong bagian gambar yang melebihi bingkai/frame
+                //                    .clipped()
+                //
+                //                //  menghilangkan padding di sekitar gambar
+                //                    .listRowInsets(EdgeInsets())
                 
-                //  gambar mengisi seluruh frame, walaupun ada sebagian yang dipotong/crop
-                    .scaledToFill()
-                // mengatur ketinggian frame
-                    .frame(height: 200)
-                
-                // memotong bagian gambar yang melebihi bingkai/frame
-                    .clipped()
-                
-                //  menghilangkan padding di sekitar gambar
+                PageView(pages: modelData.features.map { FeatureCard(landmark: $0) })
+                    .aspectRatio(3 / 2, contentMode: .fit)
                     .listRowInsets(EdgeInsets())
                 
                 //  menampilkan seluruh data berdasarkan kategori dengan loop yang diambil dari struct CategoryRow
