@@ -33,6 +33,7 @@ struct CategoryHome: View {
                 //                //  menghilangkan padding di sekitar gambar
                 //                    .listRowInsets(EdgeInsets())
                 
+                // memanggil struct PageView
                 PageView(pages: modelData.features.map { FeatureCard(landmark: $0) })
                     .aspectRatio(3 / 2, contentMode: .fit)
                     .listRowInsets(EdgeInsets())

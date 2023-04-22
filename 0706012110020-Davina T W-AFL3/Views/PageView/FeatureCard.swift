@@ -14,6 +14,8 @@ struct FeatureCard: View {
         landmark.featureImage?
             .resizable()
             .aspectRatio(3 / 2, contentMode: .fit)
+        
+        // memberi text di atas gambar
             .overlay {
                 TextOverlay(landmark: landmark)
             }

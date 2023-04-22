@@ -14,7 +14,10 @@ struct PageView<Page: View>: View {
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
+            // memanggil struct PageViewController yang menampilkan seluruh gambar dari array features
             PageViewController(pages: pages, currentPage: $currentPage)
+            
+            // memanggil struct PageControl untuk memberikan dot yang menampilkan urutan array features
             PageControl(numberOfPages: pages.count, currentPage: $currentPage)
                 .frame(width: CGFloat(pages.count * 18))
                 .padding(.trailing)

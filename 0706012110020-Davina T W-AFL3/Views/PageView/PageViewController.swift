@@ -11,12 +11,15 @@ import UIKit
 struct PageViewController<Page: View>: UIViewControllerRepresentable {
     var pages: [Page]
     
+    // binding ke variabel currentPage yang ditampilkan struct PageViewController
     @Binding var currentPage: Int
     
+    //    method yang membuat instance kelas Coordinator yang bertanggung jawab untuk manage data source dan delegate dari UIPageViewController
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
+    //    method yang membuat instance UIPageViewController baru dengan mengatur properti gaya transisi dan orientasi navigasinya, serta menyetel data source dan delegate-nya
     func makeUIViewController(context: Context) -> UIPageViewController {
         let pageViewController = UIPageViewController(
             transitionStyle: .scroll,
@@ -28,11 +31,13 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
         return pageViewController
     }
     
+    // method yang memperbarui UIPageViewController dengan pengontrol tampilan saat ini pada indeks yang ditentukan
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
         pageViewController.setViewControllers(
             [context.coordinator.controllers[0]], direction: .forward, animated: true)
     }
     
+    // class pembantu yang bertanggung jawab untuk menyediakan view controllers yang harus ditampilkan dan melacak index halaman yang dibuka pengguna
     class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         var parent: PageViewController
         var controllers = [UIViewController]()
@@ -42,6 +47,7 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
             controllers = parent.pages.map { UIHostingController(rootView: $0) }
         }
         
+        // method yang mengatur tampilan mana yang harus ditampilkan sebelum view controller diberikan
         func pageViewController(
             _ pageViewController: UIPageViewController,
             viewControllerBefore viewController: UIViewController) -> UIViewController?
@@ -55,6 +61,7 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
             return controllers[index - 1]
         }
         
+        // method yang mengatur tampilan mana yang harus ditampilkan setelah view controller diberikan
         func pageViewController(
             _ pageViewController: UIPageViewController,
             viewControllerAfter viewController: UIViewController) -> UIViewController?
@@ -68,6 +75,7 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
             return controllers[index + 1]
         }
         
+        // method yang digunakan untuk memperbarui indeks halaman saat ini pada properti currentPage PageViewController
         func pageViewController(
             _ pageViewController: UIPageViewController,
             didFinishAnimating finished: Bool,

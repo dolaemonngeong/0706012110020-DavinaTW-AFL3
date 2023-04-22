@@ -26,7 +26,7 @@ struct ProfileSummary: View {
                 Text("Seasonal Photos: \(profile.seasonalPhoto.rawValue)")
                 Text("Goal Date: ") + Text(profile.goalDate, style: .date)
                 
-                // memberi garis tipis berwarna abu-abu untuk memisahkan konten
+                // memberi garis tipis berwarna abu-abu 
                 Divider()
                 
                 VStack(alignment: .leading) {
