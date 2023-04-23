@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct _706012110020_Davina_T_W_AFL3App: App {
     
-//    inisialisasi observable object ModelData()
+    //    inisialisasi observable object ModelData()
     @StateObject private var modelData = ModelData()
     
     var body: some Scene {
@@ -18,5 +18,10 @@ struct _706012110020_Davina_T_W_AFL3App: App {
             ContentView()
                 .environmentObject(modelData)
         }
+        
+        // sebuah conditional yang akan menampilkan notifikasi watchOS dengan menggunakan class NotificationController dan  pemberian nama category
+        #if os(watchOS)
+            WKNotificationScene(controller: NotificationController.self, category: "LandmarkNear")
+        #endif
     }
 }
