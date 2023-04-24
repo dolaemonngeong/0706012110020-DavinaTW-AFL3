@@ -9,17 +9,43 @@ import SwiftUI
 
 struct LandmarkList: View {
     
-    //    property untuk membuat view yang bergantung pada data bersama
+    // property untuk membuat view yang bergantung pada data bersama
     @EnvironmentObject var modelData: ModelData
     
-    //    property yang simpan informasi spesifik
+    // property yang simpan informasi dimana secara default tidak menampilkan landmark favorit 
     @State private var showFavoritesOnly = false
     
-    //    variabel yang membantu dalam menampilkan landmark favorit
-    var filteredLandmarks: [Landmark]{
-        modelData.landmarks.filter{ landmark in
+    @State private var filter = FilterCategory.all
+    
+    @State private var selectedLandmark: Landmark?
+    
+    // enumeration yang membantu dalam menampilkan pilihan pada bagian filter
+    enum FilterCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+        
+        var id: FilterCategory { self }
+    }
+    
+    
+    // variabel yang membantu dalam filter data landmark
+    var filteredLandmarks: [Landmark] {
+        modelData.landmarks.filter { landmark in
             (!showFavoritesOnly || landmark.isFavorite)
+            && (filter == .all || filter.rawValue == landmark.category.rawValue)
         }
+    }
+    
+    var title: String {
+        let title = filter == .all ? "Landmarks" : filter.rawValue
+        return showFavoritesOnly ? "Favorite \(title)" : title
+    }
+    
+    // variabel untuk menunjukkan index pilihan landmark
+    var index: Int? {
+        modelData.landmarks.firstIndex(where: { $0.id == selectedLandmark?.id })
     }
     
     var body: some View {
@@ -27,7 +53,7 @@ struct LandmarkList: View {
         NavigationView {
             
             // menampilkan seluruh list data
-            List {
+            List(selection: $selectedLandmark){
                 
                 //  memberi tombol toggle yang dapat filter landmark favorit
                 Toggle(isOn: $showFavoritesOnly){
@@ -41,21 +67,46 @@ struct LandmarkList: View {
                     } label: {
                         LandmarkRow(landmark: landmark)
                     }
+                    
+                    // mempermudah pengambilan landmark yang dipilih
+                    .tag(landmark)
                 }
             }
             
-            //            menampilkan judul pada navigation bar
-            .navigationTitle("Landmarks")
+            // menampilkan judul pada navigation bar
+            .navigationTitle(title)
+            
+            // mengatur minimum lebar frame
+            .frame(minWidth: 300)
+            
+            // memberi toolbar yang filter dengan pemilihan kategori dan tombol checkbox favorit
+            .toolbar {
+                ToolbarItem {
+                    
+                    Menu {
+                        Picker("Category", selection: $filter) {
+                            ForEach(FilterCategory.allCases) { category in
+                                Text(category.rawValue).tag(category)
+                            }
+                        }
+                        .pickerStyle(.inline)
+                        
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Label("Favorites only", systemImage: "star.fill")
+                        }
+                        
+                    } label: {
+                        Label("Filter", systemImage: "slider.horizontal.3")
+                    }
+                }
+            }
+            
+            // memberi tulisan yang ditaruh di sisi kanan pada MacOS saat pengguna belum klik salah satu landmark (placeholder)
+            Text("Select a Landmark")
         }
         
-        //        NavigationStack{
-        //            List(landmarks){ landmark in
-        //                NavigationLink{
-        //                    LandmarkDetail(landmark: landmark)
-        //                }
-        //            }
-        //        }
-        
+        // dapat menerapkan custom menu command yang sudah diatur di LandmarkCommands
+        .focusedValue(\.selectedLandmark, $modelData.landmarks[index ?? 0])
     }
 }
 

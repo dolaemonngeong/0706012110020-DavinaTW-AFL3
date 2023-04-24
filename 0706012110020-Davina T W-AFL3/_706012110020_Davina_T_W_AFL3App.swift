@@ -19,9 +19,25 @@ struct _706012110020_Davina_T_W_AFL3App: App {
                 .environmentObject(modelData)
         }
         
-        // sebuah conditional yang akan menampilkan notifikasi watchOS dengan menggunakan class NotificationController dan  pemberian nama category
+        // conditional jika operating system bukan watchOS, maka panggil struct LandmarkCommands() dengan
+        #if !os(watchOS)
+            // view modifier yang digunakan untuk menambahkan custom app-level actions ke toolbar
+            .commands {
+                LandmarkCommands()
+            }
+        #endif
+        
+        
+        // sebuah conditional jika operating system adalah watchOS, maka tampilkan notifikasi watchOS dengan menggunakan class NotificationController dan  pemberian nama category
         #if os(watchOS)
             WKNotificationScene(controller: NotificationController.self, category: "LandmarkNear")
+        #endif
+        
+        // sebuah conditional jika operating system adalah macOS, maka panggil struct LandmarkSettings() saat pengguna memilih "Settings"
+        #if os(macOS)
+            Settings {
+                LandmarkSettings()
+            }
         #endif
     }
 }

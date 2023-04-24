@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    // deklarasi modelData sebagai environtment objek yang dapat diakses view dan subview
     @EnvironmentObject var modelData: ModelData
     
-    //    property LandmarkDetail
+    // property LandmarkDetail
     var landmark: Landmark
     
     var landmarkIndex: Int {
@@ -19,71 +20,71 @@ struct LandmarkDetail: View {
     
     var body: some View {
         
-        //        pengguna dapat scroll
+        // pengguna dapat scroll
         ScrollView {
             
-            //            memanggil struct MapView untuk mensmpilkan peta
+            // memanggil struct MapView untuk menampilkan peta
             MapView(coordinate: landmark.locationCoordinate)
             
-            //            menaruh ukuran peta di paling atas
+            // menaruh ukuran peta di paling atas
                 .ignoresSafeArea(edges: .top)
             
-            //            memberi ukuran frame peta dengan ketinggian 300
+            // memberi ukuran frame peta dengan ketinggian 300
                 .frame(height: 300)
             
-            //            memanggil struct CircleImage untuk menampilkan gambarnya
+            // memanggil struct CircleImage untuk menampilkan gambarnya
             CircleImage(image: landmark.image)
             
-            //            mengatur posisi gambar di tengah
+            // mengatur posisi gambar di tengah
                 .offset(y: -130)
                 .padding(.bottom, -130)
             
-            //          kumpulan kelompok view secara vertikal yang di dalamnya memiliki beberapa kelompok view secara horisontal
+            // kumpulan kelompok view secara vertikal yang di dalamnya memiliki beberapa kelompok view secara horisontal
             VStack(alignment: .leading) {
                 
-                //                kumpulan kelompok view secara horisontal
+                // kumpulan kelompok view secara horisontal
                 HStack {
                     
-                    //                    memberikan text dengan font title
+                    // memberikan text dengan font title
                     Text(landmark.name)
                         .font(.title)
                     
-                    //
+                    // memberikan tombol bintang
                     FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
                 }
                 
-                //                kumpulan kelompok view secara horisontal
+                // kumpulan kelompok view secara horisontal
                 HStack {
                     
-                    //                    memberikan text
+                    // memberikan text
                     Text(landmark.park)
                     
-                    //                    memberikan jarak antara park dan state
+                    // memberikan jarak antara park dan state
                     Spacer()
                     
                     Text(landmark.state)
                 }
-                //                memberi font tulisan HStack yang di atas
+                // memberi font tulisan HStack yang di atas
                 .font(.subheadline)
-                //                memberi warna tulisan HStack yang di atas
+                // memberi warna tulisan HStack yang di atas
                 .foregroundColor(.secondary)
                 
-                //                memberikan jarak secara vertikal
+                // memberikan jarak secara vertikal
                 Divider()
                 
-                //              memberikan text dengan font khusus
+                // memberikan text dengan font khusus
                 Text("About \(landmark.name)")
                     .font(.title2)
                 Text(landmark.description)
             }
-            //            memberi jarak pada ujung kiri dan kanan
+            // memberi jarak pada ujung kiri dan kanan
             .padding()
         }
         
-        //        pemberian judul navigasi
+        // pemberian judul navigasi
         .navigationTitle(landmark.name)
         
-        //        judul navigasi muncul secara inline
+        // judul navigasi muncul secara inline
         .navigationBarTitleDisplayMode(.inline)
     }
 }

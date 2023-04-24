@@ -15,16 +15,34 @@ struct LandmarkRow: View {
             landmark.image
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(landmark.name)
+                .cornerRadius(5)
+            
+            
+            VStack(alignment: .leading) {
+                
+                Text(landmark.name)
+                    .bold()
+                
+                // jika bukan watchOS, maka tampilkan juga text nama park dari landmark
+                #if !os(watchOS)
+                    Text(landmark.park)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                #endif
+                
+            }
             
             Spacer()
             
-            //            jika terdapat sebuah data ditemukan terdapat landmark favorit, maka berikan bintang berwarna kuning
+            // jika terdapat sebuah data ditemukan terdapat landmark favorit, maka berikan bintang berwarna kuning
             if landmark.isFavorite {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
             }
         }
+        
+        // memberi jarak pada atas dan bawah
+        .padding(.vertical, 4)
     }
 }
 
