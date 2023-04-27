@@ -51,7 +51,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         
-        //        membuat objek tersedia untuk semua view
+        // membuat objek tersedia untuk semua view
             .environmentObject(ModelData())
     }
 }
