@@ -12,7 +12,7 @@ struct LandmarkList: View {
     // property untuk membuat view yang bergantung pada data bersama
     @EnvironmentObject var modelData: ModelData
     
-    // property yang simpan informasi dimana secara default tidak menampilkan landmark favorit 
+    // property yang simpan informasi dimana secara default tidak menampilkan landmark favorit
     @State private var showFavoritesOnly = false
     
     @State private var filter = FilterCategory.all
@@ -56,9 +56,9 @@ struct LandmarkList: View {
             List(selection: $selectedLandmark){
                 
                 //  memberi tombol toggle yang dapat filter landmark favorit
-                Toggle(isOn: $showFavoritesOnly){
-                    Text("Favorites only")
-                }
+                //                Toggle(isOn: $showFavoritesOnly){
+                //                    Text("Favorites only")
+                //                }
                 
                 //  navigasi ke detail dari landmark yang diklik pengguna
                 ForEach(filteredLandmarks) { landmark in
